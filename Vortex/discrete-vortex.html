@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Discrete Vortex Method | Rafael Villagra</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body class="project-detail-page">
+
+  <div class="project-page">
+    
+    <a href="index.html" class="back-link">← Back to Portfolio</a>
+
+    <header class="project-hero">
+      <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 20px;">
+        <div>
+          <h1>Airfoil Lift Analysis via Discrete Vortex Method</h1>
+          <p class="project-subtitle">
+            Academic project focused on calculating the aerodynamic lift and pressure distribution of a parabolic airfoil, utilizing a panel-based numerical method programmed under potential flow theory.
+          </p>
+          <p class="project-meta">Academic Project | Fluid Mechanics Course | 2023</p>
+        </div>
+        <div style="flex-shrink: 0;">
+          <img src="images/unc_logo.png" alt="University Logo" style="max-height: 80px; width: auto; object-fit: contain;">
+        </div>
+      </div>
+      
+      <div class="project-tags" style="margin-top: 20px;">
+        <span class="tag">MATLAB</span>
+        <span class="tag">Computational Aerodynamics</span>
+        <span class="tag">Discrete Vortex Method</span>
+        <span class="tag">Potential Flow</span>
+      </div>
+    </header>
+
+    <section class="project-section">
+      <h2>Project Overview</h2>
+      <p>
+        The objective of this project was to calculate the aerodynamic lift and pressure distribution over a thin parabolic airfoil (5% camber) using the Discrete Vortex Method (DVM). By operating under potential flow theory, the project involved discretizing the airfoil geometry into panels and developing a robust numerical algorithm from scratch to simulate the inviscid and irrotational flow field around the body.
+      </p>
+    </section>
+
+    <section class="project-section">
+      <h2>Key Responsibilities & Methodology</h2>
+      <ul>
+        <li><strong>Algorithm Development:</strong> Programmed a complete MATLAB script to generate the airfoil geometry, calculate influence coefficient matrices, and solve the system of linear equations for vortex circulations.</li>
+        <li><strong>Boundary Conditions:</strong> Correctly implemented the flow impenetrability condition and strategically placed vortices (at 25% chord) and control points (at 75% chord) to automatically satisfy the Kutta condition.</li>
+        <li><strong>Convergence Study:</strong> Conducted a systematic panel refinement study, demonstrating that a 64-panel discretization provided the optimal balance between computational cost and lift value convergence.</li>
+        <li><strong>Model Validation:</strong> Validated the custom code by simulating a flat plate and verifying the computed circulation values and lift coefficients against analytical data from Katz & Plotkin's "Low-Speed Aerodynamics".</li>
+      </ul>
+    </section>
+
+    <section class="project-section">
+      <h2>Computational Results & Visualizations</h2>
+      
+      <div class="project-gallery">
+        <figure>
+          <img src="images/vortex_distribution.jpg" alt="Vortex and Normal Vectors Distribution">
+          <figcaption>Panel discretization showing normal vectors and vortex placement along the cambered airfoil.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/cp_curve.jpg" alt="Coefficient of Pressure Curve">
+          <figcaption>Calculated Pressure Coefficient (Cp) distribution across the airfoil chord.</figcaption>
+        </figure>
+      </div>
+
+    </section>
+
+  </div>
+
+</body>
+</html>
