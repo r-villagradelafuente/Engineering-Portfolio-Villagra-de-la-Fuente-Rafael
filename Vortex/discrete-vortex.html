@@ -41,32 +41,28 @@
       </p>
     </section>
 
-    <section class="project-section">
-      <h2>Key Responsibilities & Methodology</h2>
-      <ul>
-        <li><strong>Algorithm Development:</strong> Programmed a complete MATLAB script to generate the airfoil geometry, calculate influence coefficient matrices, and solve the system of linear equations for vortex circulations.</li>
-        <li><strong>Boundary Conditions:</strong> Correctly implemented the flow impenetrability condition and strategically placed vortices (at 25% chord) and control points (at 75% chord) to automatically satisfy the Kutta condition.</li>
-        <li><strong>Model Validation:</strong> Validated the custom code by simulating a flat plate and verifying the computed circulation values and lift coefficients against analytical data from Katz & Plotkin's "Low-Speed Aerodynamics".</li>
-      </ul>
-    </section>
-
-    <section class="project-section">
+<section class="project-section">
       <h2>Computational Results & Visualizations</h2>
+      
+      <p style="font-style: italic; font-size: 0.9em; color: #666; margin-bottom: 20px;">
+        * Note: The following figures were extracted directly from the original technical report presented in Spanish.
+      </p>
       
       <div class="project-gallery">
         <figure>
-          <img src="images/vortex_distribution.jpg" alt="Vortex and Normal Vectors Distribution">
-          <figcaption>Panel discretization showing normal vectors and vortex placement along the cambered airfoil.</figcaption>
+          <img src="vor y vn 16.jpg" alt="Vortex and Normal Vectors Distribution">
+          <figcaption>Panel discretization (16 panels) showing normal vectors and vortex placement along the cambered airfoil.</figcaption>
         </figure>
+        
         <figure>
-          <img src="images/cp_curve.jpg" alt="Coefficient of Pressure Curve">
-          <figcaption>Calculated Pressure Coefficient (Cp) distribution across the airfoil chord.</figcaption>
+          <img src="Cp 64 paneles.jpg" alt="Coefficient of Pressure Curve">
+          <figcaption>Calculated Pressure Coefficient (Cp) distribution across the airfoil chord for the converged 64-panel case.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="borde de fuga perf.jpg" alt="Velocity Field at Trailing Edge">
+          <figcaption>Superimposed velocity field at the trailing edge, visually validating the Kutta condition implementation and evidencing the vortex positions.</figcaption>
         </figure>
       </div>
 
     </section>
-
-  </div>
-
-</body>
-</html>
