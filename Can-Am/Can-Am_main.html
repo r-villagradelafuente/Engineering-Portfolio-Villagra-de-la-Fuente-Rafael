@@ -51,16 +51,63 @@
       </ul>
     </section>
 
-    <section class="project-section">
-      <h2>CAD Models & Structural Layout</h2>
-      
-      <div class="video-placeholder">
-        <p><em>CAD Renders and Suspension Arm Models will be displayed here.</em></p>
-      </div>
+<section class="project-section">
+      <h2>CAD Models & Structural Layout</h2>
+      
+            <div class="project-gallery">
+        <figure>
+          <img src="Geometria General.jpg" alt="Proposed CAD Geometry render">
+          <figcaption>Initial CAD render of the proposed reinforced suspension arm geometry developed in SolidWorks.</figcaption>
+        </figure>
+        
+        <figure>
+          <img src="safety factor.png" alt="Safety Factor Analysis FEA Results">
+          <figcaption>Safety Factor Finite Element Analysis (FEA) on the meshed component, identifying structural weak points (red/orange zones).</figcaption>
+        </figure>
+      </div>
+    </section>
 
-    </section>
+  </div>
 
+  <div id="myModal" class="modal">
+    <span class="close">&times;</span>
+    <img class="modal-content" id="imgModal">
+    <div id="caption"></div>
   </div>
+
+  <script>
+    // Recupera gli elementi della finestra modale
+    var modal = document.getElementById("myModal");
+    var modalImg = document.getElementById("imgModal");
+    var captionText = document.getElementById("caption");
+
+    // Seleziona tutte le immagini dentro la galleria
+    var images = document.querySelectorAll(".project-gallery img");
+
+    // Aggiungi la funzione di apertura a ciascuna immagine
+    images.forEach(function(img) {
+      img.onclick = function(){
+        modal.style.display = "block";
+        modalImg.src = this.src;
+        captionText.innerHTML = this.alt; // Il testo 'alt' diventa la didascalia
+      }
+    });
+
+    // Recupera il pulsante per chiudere (la X)
+    var span = document.getElementsByClassName("close")[0];
+
+    // Chiudi la finestra quando clicchi sulla X
+    span.onclick = function() {
+      modal.style.display = "none";
+    }
+
+    // Chiudi la finestra se clicchi ovunque fuori dall'immagine
+    modal.onclick = function(event) {
+      if (event.target === modal) {
+        modal.style.display = "none";
+      }
+    }
+  </script>
 
 </body>
 </html>
