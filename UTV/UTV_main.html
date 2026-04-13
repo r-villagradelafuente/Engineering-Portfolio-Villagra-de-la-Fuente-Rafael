@@ -4,7 +4,71 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>UTV Conceptual Design | Rafael Villagra</title>
-<link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../style.css">
+
+  <style>
+    /* Effetto cursore e zoom per le immagini della galleria */
+    .project-gallery img {
+      cursor: zoom-in;
+      transition: transform 0.3s ease;
+    }
+    .project-gallery img:hover {
+      transform: scale(1.03);
+    }
+
+    /* Struttura della finestra modale (sfondo scuro) */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 2000;
+      padding-top: 50px;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.9);
+    }
+
+    /* Immagine ingrandita al centro */
+    .modal-content {
+      margin: auto;
+      display: block;
+      max-width: 90%;
+      max-height: 80vh;
+      object-fit: contain;
+    }
+
+    /* Testo della didascalia sotto l'immagine */
+    #caption {
+      margin: auto;
+      display: block;
+      width: 80%;
+      text-align: center;
+      color: #ccc;
+      padding: 15px 0;
+      font-size: 16px;
+    }
+
+    /* Tasto "X" per chiudere */
+    .close {
+      position: absolute;
+      top: 20px;
+      right: 35px;
+      color: #f1f1f1;
+      font-size: 40px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: #bbb;
+      text-decoration: none;
+      cursor: pointer;
+    }
+  </style>
+
 </head>
 <body class="project-detail-page">
 
@@ -12,22 +76,21 @@
     
     <a href="../index.html" class="back-link">← Back to Portfolio</a>
 
-  <header class="project-hero">
-        <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 20px;">
-          <div>
-            <h1>UTV Competition Vehicle Conceptual Design</h1>
-            <p class="project-subtitle">
-              Preliminary design and subsystem integration of a competition UTV, ensuring physical feasibility through dynamic clearance analysis and large-scale CAD management.
-            </p>
-            <p class="project-meta">Engineering Internship | FDC Diseño y Desarrollo | 2024 – 2025</p>
-          </div>
-          <div style="flex-shrink: 0;">
-            <img src="Logo_FDC.jpeg" alt="FDC Logo" style="max-height: 90px; width: auto; object-fit: contain;">
-          </div>
+    <header class="project-hero">
+      <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 20px;">
+        <div>
+          <h1>UTV Competition Vehicle Conceptual Design</h1>
+          <p class="project-subtitle">
+            Preliminary design and subsystem integration of a competition UTV, ensuring physical feasibility through dynamic clearance analysis and large-scale CAD management.
+          </p>
+          <p class="project-meta">Engineering Internship | FDC Diseño y Desarrollo | 2024 – 2025</p>
         </div>
-      </header>
+        <div style="flex-shrink: 0;">
+          <img src="Logo_FDC.jpeg" alt="FDC Logo" style="max-height: 90px; width: auto; object-fit: contain;">
+        </div>
+      </div>
       
-      <div class="project-tags">
+      <div class="project-tags" style="margin-top: 20px;">
         <span class="tag">SolidWorks</span>
         <span class="tag">CAD Integration</span>
         <span class="tag">Conceptual Design</span>
@@ -54,15 +117,78 @@
     </section>
 
     <section class="project-section">
-      <h2>CAD Models & Integration</h2>
+      <h2>CAD Models & Kinematic Integration</h2>
       
-      <div class="video-placeholder">
-        <p><em>CAD Renders and Assembly Screenshots will be displayed here.</em></p>
+      <p style="font-style: italic; font-size: 0.9em; color: #666; margin-bottom: 20px;">
+        * Note: The following figures are captures from the official progress report and have been explicitly authorized for sharing.
+      </p>
+
+      <div class="project-gallery">
+        
+        <figure>
+          <img src="Roll_cage_1.png" alt="UTV Roll Cage Layout Front-Side View">
+          <figcaption>Preliminary CAD rendering of the UTV structural chassis and roll cage packaging.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="Roll_cage_2.png" alt="UTV Roll Cage Layout Side View">
+          <figcaption>Side profile of the roll cage highlighting driver compartment constraints and main nodal connections.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="6.jpg" alt="Front Left Camber Angle vs Motion Heave">
+          <figcaption>Kinematic analysis evaluating the variation of the Front Left Camber Angle across the full suspension heave motion.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="11.jpg" alt="Rear Left Toe Angle vs Motion Heave">
+          <figcaption>Dynamic tracking of the Rear Left Toe Angle variation during maximum bump and rebound suspension travel.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="13.png" alt="Inboard and Outboard CV Joint Displacements">
+          <figcaption>Spatial displacement curves (X, Y, Z coordinates) for the Inboard and Outboard CV joints, analyzed to ensure mechanical operational limits are not exceeded.</figcaption>
+        </figure>
+
       </div>
 
-      </section>
+    </section>
 
   </div>
+
+  <div id="myModal" class="modal">
+    <span class="close">&times;</span>
+    <img class="modal-content" id="imgModal">
+    <div id="caption"></div>
+  </div>
+
+  <script>
+    var modal = document.getElementById("myModal");
+    var modalImg = document.getElementById("imgModal");
+    var captionText = document.getElementById("caption");
+
+    var images = document.querySelectorAll(".project-gallery img");
+
+    images.forEach(function(img) {
+      img.onclick = function(){
+        modal.style.display = "block";
+        modalImg.src = this.src;
+        captionText.innerHTML = this.alt;
+      }
+    });
+
+    var span = document.getElementsByClassName("close")[0];
+
+    span.onclick = function() {
+      modal.style.display = "none";
+    }
+
+    modal.onclick = function(event) {
+      if (event.target === modal) {
+        modal.style.display = "none";
+      }
+    }
+  </script>
 
 </body>
 </html>
